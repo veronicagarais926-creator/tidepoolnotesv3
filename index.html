@@ -7,17 +7,16 @@
   <title>Tidepool Notes & Social</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- User Login / Sign Up Interface (Matching Mockup Image) -->
+  <!-- Log In / Sign Up Gate Screen -->
   <section class="cloud-gate" id="cloud-gate" aria-labelledby="auth-title">
     <div class="auth-wrapper">
       <h1 class="auth-header-title">TIDEPOOL: NOTES & SOCIAL</h1>
       
       <div class="auth-card">
-        <!-- Left Side Avatar Circle -->
         <div class="auth-avatar-circle" aria-hidden="true">
           <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="50" cy="50" r="46" stroke="#8ec5fc" stroke-width="8"/>
@@ -26,13 +25,12 @@
           </svg>
         </div>
 
-        <!-- Right Side Form Area -->
         <div class="auth-form-container">
           <h2 id="auth-title">Welcome to your own Safe Space</h2>
           
           <form id="sign-in-form" class="sign-in-form">
             <div class="input-group">
-              <label for="sign-in-email" class="sr-only">Username or Email Address</label>
+              <label for="sign-in-email" class="sr-only">Username or Email</label>
               <input id="sign-in-email" type="text" autocomplete="username" placeholder="username/email address" required>
             </div>
 
@@ -54,152 +52,123 @@
     </div>
   </section>
 
-  <!-- Main App Shell -->
+  <!-- Main App Shell Interface -->
   <div class="app-shell" id="app-shell" hidden>
-    <!-- Sidebar Navigation -->
-    <aside class="sidebar" aria-label="Notes navigation">
+    <!-- Left Sidebar Navigation -->
+    <aside class="sidebar" aria-label="Main navigation">
       <a class="brand" href="#" aria-label="Tidepool Notes home">
-        <span>Tidepool<span class="brand-light">Notes</span></span>
+        <span>Tidepool</span>
+        <span class="brand-sub">Notes</span>
       </a>
       
-      <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
-        <button class="nav-item is-active" type="button" data-view="feed" id="nav-feed-btn">Feed</button>
-        <button class="nav-item" type="button" data-view="discover">Discover</button>
-        <button class="nav-item" type="button" data-view="friends">Friends<span class="nav-count" id="friend-count" hidden></span></button>
-        <button class="nav-item" type="button" data-view="chats">Chats<span class="nav-count" id="chat-count" hidden></span></button>
-        <button class="nav-item" type="button" data-view="profile">My profile</button>
-        <button class="nav-item" type="button" data-view="notes">My notes</button>
+      <nav class="primary-nav" id="primary-nav">
+        <button class="nav-item is-active" type="button" data-view="feed" id="nav-feed-btn">
+          <span class="nav-icon">🏠</span> FEED
+        </button>
+        <button class="nav-item" type="button" data-view="discover">
+          <span class="nav-icon">🔍</span> DISCOVER
+        </button>
+        <button class="nav-item" type="button" data-view="friends">
+          <span class="nav-icon">👥</span> FRIENDS <span class="nav-count" id="friend-count" hidden></span>
+        </button>
+        <button class="nav-item" type="button" data-view="chats">
+          <span class="nav-icon">✉️</span> CHATS <span class="nav-count" id="chat-count" hidden></span>
+        </button>
+        <button class="nav-item" type="button" data-view="profile">
+          <span class="nav-icon">👤</span> PROFILE
+        </button>
+        <button class="nav-item" type="button" data-view="notes">
+          <span class="nav-icon">📋</span> NOTES
+        </button>
       </nav>
 
-      <!-- Quick Jump Button to Social Media Feed -->
-      <button class="go-feed-button" id="go-to-feed-btn" type="button">Go to Social Feed</button>
-
-      <button class="new-note-button" id="new-note" type="button"><span aria-hidden="true">+</span> New note <kbd>Ctrl N</kbd></button>
-
-      <div class="sidebar-section-heading">
-        <span>Your notebook</span>
-        <span class="note-count" id="note-count">1</span>
-      </div>
-
-      <!-- Sort Notes Dropdown Control -->
-      <div class="sort-box">
-        <label for="sort-notes-select" class="sort-label">Sort Notes:</label>
-        <select id="sort-notes-select" class="sort-select" aria-label="Sort notes list">
-          <option value="newest">Newest First</option>
-          <option value="oldest">Oldest First</option>
-          <option value="title-asc">Title (A-Z)</option>
-          <option value="title-desc">Title (Z-A)</option>
-        </select>
-      </div>
-
-      <label class="search-box">
-        <input id="search" type="search" placeholder="Find a note" autocomplete="off" aria-label="Find a note">
-        <kbd>/</kbd>
-      </label>
-
-      <div class="filter-tabs" role="group" aria-label="Filter notes">
-        <button class="filter-tab is-active" type="button" data-filter="all">All notes</button>
-        <button class="filter-tab" type="button" data-filter="pinned">Pinned</button>
-      </div>
-
-      <div class="note-list" id="note-list" aria-label="Your notes"></div>
-
-      <div class="sidebar-footer">
-        <span class="saved-dot" aria-hidden="true"></span>
-        <span id="storage-status">Saved on this device</span>
-        <button class="help-button" id="about-button" type="button" aria-label="About local storage" title="About local storage">?</button>
+      <!-- Sidebar Controls -->
+      <div class="sidebar-extra">
+        <button class="new-note-button" id="new-note" type="button">+ New Note</button>
+        <div class="sort-box">
+          <label for="sort-notes-select" class="sort-label">Sort Notes:</label>
+          <select id="sort-notes-select" class="sort-select">
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+            <option value="title-asc">Title (A-Z)</option>
+            <option value="title-desc">Title (Z-A)</option>
+          </select>
+        </div>
+        <label class="search-box">
+          <input id="search" type="search" placeholder="Find a note..." autocomplete="off">
+        </label>
+        <div class="note-list" id="note-list"></div>
       </div>
     </aside>
 
-    <!-- Workspace Main Area -->
+    <!-- Main Workspace -->
     <main class="workspace">
+      <!-- Top Header Bar -->
       <header class="topbar">
-        <div class="breadcrumb"><span id="breadcrumb-section">Community</span><span class="breadcrumb-slash">/</span><strong id="breadcrumb-title">Public feed</strong></div>
+        <div class="breadcrumb">
+          <span id="breadcrumb-section">Community</span>
+          <span class="breadcrumb-slash">/</span>
+          <strong id="breadcrumb-title">A space for you to think</strong>
+        </div>
         <div class="topbar-actions">
-          <button class="sign-in-top-button" id="guest-sign-in" type="button" hidden>Sign in</button>
-          <span class="save-indicator" id="save-indicator"><span class="saved-dot"></span> All changes saved</span>
-          <button class="sign-out-button" id="sign-out" type="button">Sign out</button>
-          <button class="avatar" type="button" aria-label="Personal notebook" title="Personal notebook">M</button>
+          <button class="sign-out-button" id="sign-out" type="button">Sign Out</button>
+          <button class="user-avatar-btn" type="button" aria-label="User profile">
+            <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="18" r="16" stroke="#8bc4f8" stroke-width="2.5" fill="#cfe8fc"/>
+              <circle cx="18" cy="14" r="6" fill="#8bc4f8"/>
+              <path d="M8 29C8 23.4772 12.4772 19 18 19C23.5228 19 28 23.4772 28 29V30H8V29Z" fill="#8bc4f8"/>
+            </svg>
+          </button>
         </div>
       </header>
 
-      <!-- Social Media Feed Section -->
-      <section class="social-view feed-view" id="feed-view" data-view-panel="feed" aria-label="Feed">
+      <!-- Social View: Public Feed Panel -->
+      <section class="social-view feed-view" id="feed-view" data-view-panel="feed">
         <div class="social-heading">
-          <div>
+          <div class="heading-text">
             <h1>Calm yourself</h1>
             <p>Drop your thoughts and breathe....</p>
           </div>
-          <button class="compose-jump" id="compose-jump" type="button" title="Create a post"><span>+ New Post</span></button>
+          <button class="compose-jump" id="compose-jump" type="button">+ New Post</button>
         </div>
 
-        <div class="guest-notice" id="guest-notice" hidden>
-          <span>Sign in to save your notes, connect with friends, and share posts.</span>
-          <button type="button" data-open-signin>Sign in</button>
-        </div>
-
-        <form class="post-composer" id="post-form">
-          <div class="composer-person">
-            <span class="mini-avatar" id="composer-avatar">M</span>
-            <span><strong id="composer-name">Your profile</strong><small>What's happening?</small></span>
-          </div>
-          <textarea id="post-caption" maxlength="280" rows="3" placeholder="What's on your mind?" aria-label="Post text"></textarea>
+        <form class="post-composer" id="post-form" hidden>
+          <textarea id="post-caption" maxlength="280" rows="3" placeholder="Drop your thoughts and breathe..."></textarea>
           <div class="composer-bottom">
-            <input id="post-photo" type="file" accept="image/jpeg,image/png,image/webp,image/gif" hidden>
+            <input id="post-photo" type="file" accept="image/*" hidden>
             <button class="composer-picture" id="choose-post-photo" type="button">Add photo</button>
-            <span class="selected-photo" id="selected-photo">Add a photo (optional)</span>
-            <span class="char-count" id="char-count">280</span>
-            <label class="visibility-picker">
-              <select id="post-visibility">
-                <option value="public">Everyone</option>
-                <option value="friends">Friends</option>
-              </select>
-            </label>
-            <button class="publish-button" id="publish-post" type="submit" disabled>Post</button>
+            <button class="publish-button" id="publish-post" type="submit">Post</button>
           </div>
         </form>
 
-        <div class="feed-tabs" id="feed-tabs" role="tablist" aria-label="Feed">
-          <button class="feed-tab is-active" type="button" role="tab" aria-selected="true" data-feed="all">For you</button>
-          <button class="feed-tab" type="button" role="tab" aria-selected="false" data-feed="friends">Friends</button>
+        <div class="feed-list" id="feed-list">
+          <div class="mock-post-card"></div>
+          <div class="mock-post-card"></div>
         </div>
-
-        <div class="feed-list" id="feed-list" aria-live="polite"></div>
       </section>
 
-      <!-- Note Editor View -->
-      <section class="editor-wrap app-view" id="notes-view" data-view-panel="notes" aria-label="Note editor" hidden>
+      <!-- Note Editor View Panel -->
+      <section class="editor-wrap app-view" id="notes-view" data-view-panel="notes" hidden>
         <div class="editor-meta">
-          <div class="date-label"><span class="sun-dot" aria-hidden="true"></span><span id="note-date">TODAY</span><span class="meta-divider">/</span><span>FIELD NOTES</span></div>
+          <div class="date-label"><span id="note-date">TODAY</span> / FIELD NOTES</div>
           <div class="note-actions">
-            <button class="save-button" id="save-note" type="button" title="Save note (Ctrl S)"><span id="save-label">Save</span></button>
-            <button class="icon-button pin-button" id="pin-note" type="button" title="Pin note">📌</button>
-            <button class="icon-button delete-button" id="delete-note" type="button" title="Delete note">🗑️</button>
+            <button class="save-button" id="save-note" type="button">Save</button>
+            <button class="icon-button" id="pin-note" type="button" title="Pin Note">📌</button>
+            <button class="icon-button" id="delete-note" type="button" title="Delete Note">🗑️</button>
           </div>
         </div>
-        <input class="note-title" id="note-title" type="text" maxlength="120" placeholder="Untitled note" aria-label="Note title">
-        <div class="editor-toolbar" role="toolbar" aria-label="Text formatting">
-          <div class="format-group">
-            <button class="format-button format-select" type="button" data-command="formatBlock" data-value="p">Text</button>
-            <span class="toolbar-rule"></span>
-            <button class="format-button strong-button" type="button" data-command="bold">B</button>
-            <button class="format-button italic-button" type="button" data-command="italic">I</button>
-            <button class="format-button underline-button" type="button" data-command="underline">U</button>
-          </div>
-          <div class="format-group format-tools">
-            <input id="image-input" type="file" accept="image/*" hidden>
-            <button class="tool-button" id="insert-image" type="button">Picture</button>
-            <span class="toolbar-rule"></span>
-            <input id="font-input" type="file" accept=".ttf,.otf,.woff,.woff2" hidden>
-            <button class="tool-button font-tool" id="import-font" type="button"><span id="font-label">Add font</span></button>
-          </div>
+        <input class="note-title" id="note-title" type="text" placeholder="Untitled note">
+        <div class="editor-toolbar">
+          <button class="format-button" type="button" data-command="bold"><b>B</b></button>
+          <button class="format-button" type="button" data-command="italic"><i>I</i></button>
+          <button class="format-button" type="button" data-command="underline"><u>U</u></button>
         </div>
-        <div class="editor-content" id="editor-content" contenteditable="true" role="textbox" spellcheck="true"></div>
+        <div class="editor-content" id="editor-content" contenteditable="true"></div>
       </section>
     </main>
   </div>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="toast" id="toast"></div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js"></script>
   <script src="app.js"></script>
